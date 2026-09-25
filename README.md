@@ -1,89 +1,66 @@
-[README.md](https://github.com/user-attachments/files/32589856/README.md)
-# Proyecto_Nanomateriales# Simulación Óptica de Litografía — Modelo de Difracción
+# Sistema de Litografía Láser de Bajo Costo para Investigación
 
-Modelo computacional en C/C++ para calcular patrones de intensidad de luz generados por difracción, aplicado al proceso de litografía óptica.
+## 📌 Problemática
 
-## Descripción
+En el Perú existe una carencia significativa de instrumentación especializada para procesos de **litografía láser** orientados a la investigación en ciencia de materiales y microfabricación. La ausencia de equipos accesibles limita:
 
-Este proyecto implementa un modelo de propagación de luz basado en la teoría de difracción de **Fresnel/Fraunhofer** (ajustar según el régimen que uses), con el objetivo de predecir el patrón de intensidad luminosa que incide sobre el sustrato (fotorresistente) a partir de una máscara o abertura definida.
+- El desarrollo de líneas de investigación en microfabricación dentro de universidades y centros de investigación nacionales.
+- La formación práctica de estudiantes e investigadores en procesos de fabricación a microescala.
+- La independencia tecnológica frente a la importación de equipos de litografía comerciales, cuyo costo es prohibitivo para la mayoría de laboratorios universitarios del país.
 
-El marco teórico central es el **principio de Huygens-Fresnel**, según el cual cada punto de un frente de onda actúa como fuente secundaria de ondículas esféricas; la superposición coherente de estas ondículas en el plano de observación determina el patrón de difracción resultante.
+## 🎯 Objetivo
 
-## Fundamento físico
+Desarrollar un sistema de litografía láser **accesible y especializado**, que permita realizar procesos de fabricación a microescala con un costo significativamente menor al de los equipos comerciales, sin sacrificar la precisión necesaria para aplicaciones de investigación.
 
-- **Ecuación de difracción de Fresnel** (campo cercano) o **Fraunhofer** (campo lejano) — especificar cuál usa el modelo.
-- Parámetros físicos relevantes:
-  - Longitud de onda (λ) de la fuente de iluminación
-  - Distancia máscara–sustrato (z)
-  - Geometría de la abertura/máscara
-  - Índice de refracción del medio (si aplica)
+### Objetivos específicos
 
-> Ajusta esta sección con la formulación matemática exacta (integral de difracción, aproximaciones usadas, condiciones de contorno) que implementaste.
+- [ ] Diseñar la arquitectura óptica y mecánica del sistema (fuente láser, sistema de posicionamiento XY/XYZ, óptica de enfoque).
+- [ ] Implementar el sistema de control (firmware/software) para la generación de patrones.
+- [ ] Caracterizar la resolución espacial y repetibilidad del sistema.
+- [ ] Validar el sistema mediante casos de prueba de fabricación real.
+- [ ] Documentar el proceso completo para facilitar su réplica en otros laboratorios.
 
-## Estructura del proyecto
+## 🔬 Aplicaciones
+
+El sistema está orientado a la investigación en la fabricación de:
+
+- **Microchips** — prototipado de circuitos integrados a escala de laboratorio.
+- **Sensores** — fabricación de sensores basados en patrones microestructurados.
+- **Semiconductores** — procesamiento de obleas para investigación en dispositivos semiconductores.
+- **Circuitos** — fabricación de circuitos impresos y microcircuitos personalizados.
+- Otros procesos de microfabricación que requieran patrones de alta resolución.
+
+## 🧩 Marco conceptual
+
+La litografía láser es un proceso de fabricación aditiva/sustractiva que utiliza un haz láser enfocado para transferir un patrón geométrico sobre un sustrato recubierto con material fotosensible (fotorresistencia). El sistema propuesto se basa en los principios de:
+
+- **Óptica de formación de imagen** (enfoque, difracción, límite de resolución).
+- **Sistemas de posicionamiento de precisión** (control de movimiento en ejes X-Y).
+- **Fotolitografía directa (maskless lithography)**, evitando el uso de máscaras físicas costosas.
+
+## 🛠️ Estructura del repositorio
 
 ```
-proyecto-litografia/
-├── src/            # Código fuente (.c / .cpp)
-├── include/         # Headers (.h / .hpp)
-├── data/            # Máscaras/patrones de entrada
-├── output/          # Resultados de simulación (patrones de intensidad)
-├── Makefile
+├── hardware/         # Diseños CAD, esquemas ópticos y mecánicos
+├── firmware/         # Código embebido para control del sistema
+├── software/         # Software de generación y control de patrones
+├── docs/             # Documentación técnica y de diseño
+├── tests/            # Resultados de caracterización y pruebas
 └── README.md
 ```
 
-> Ajusta este árbol a la estructura real de tu repositorio.
+## 🚧 Estado del proyecto
 
-## Requisitos
+> Proyecto en fase de diseño e investigación inicial.
 
-- Compilador compatible con C/C++11 o superior (GCC, Clang, MSVC)
-- `make` (opcional, si usas Makefile)
-- Librerías externas: *(especificar, p. ej. FFTW para transformadas de Fourier, si aplica)*
+## 📚 Referencias y motivación técnica
 
-## Instalación y compilación
+Este proyecto se enmarca dentro de la necesidad de fortalecer capacidades locales de I+D en microfabricación, siguiendo el enfoque de instrumentación científica de bajo costo (*open-source scientific hardware*) que ha demostrado ser efectivo en otros contextos de investigación con recursos limitados.
 
-```bash
-git clone https://github.com/tu-usuario/proyecto-litografia.git
-cd proyecto-litografia
-make
-```
+## 👤 Autor
 
-O compilación manual:
+**Ingeniero Lino** — Ingeniería Física, Universidad Nacional de Ingeniería (UNI), Lima, Perú.
 
-```bash
-g++ -std=c++17 -O2 src/*.cpp -o simulacion
-```
+## 📄 Licencia
 
-## Uso
-
-```bash
-./simulacion --mascara data/patron.txt --lambda 405e-9 --distancia 0.01
-```
-
-| Parámetro | Descripción | Unidad |
-|---|---|---|
-| `--mascara` | Archivo con la geometría de la abertura | — |
-| `--lambda` | Longitud de onda de la fuente | metros |
-| `--distancia` | Distancia máscara–sustrato | metros |
-
-> Reemplaza estos parámetros por los argumentos reales que acepta tu programa.
-
-## Resultados
-
-El programa genera un archivo con el patrón de intensidad `I(x, y)` en el plano del sustrato, que puede visualizarse con herramientas externas (Python/Matplotlib, MATLAB, etc.).
-
-## Contribuir
-
-1. Haz un fork del repositorio
-2. Crea una rama: `git checkout -b feature/nueva-funcion`
-3. Haz commit de tus cambios: `git commit -m "Agrega X"`
-4. Sube la rama: `git push origin feature/nueva-funcion`
-5. Abre un Pull Request
-
-## Autor
-
-Desarrollado por [tu nombre] — Ingeniería Física, UNI.
-
-## Licencia
-
-MIT (o la que corresponda a tu proyecto).
+_Por definir (se recomienda una licencia open-source como MIT o GPLv3 si el proyecto busca ser replicable por otros laboratorios)._
