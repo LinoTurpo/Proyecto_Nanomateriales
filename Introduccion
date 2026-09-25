@@ -1,0 +1,21 @@
+# Introducción
+
+El avance de la microelectrónica y la ciencia de materiales exige una capacidad de fabricación a microescala altamente precisa. La producción y el análisis detallado de microestructuras complejas son fundamentales para el desarrollo experimental. No obstante, la materialización física de estas geometrías enfrenta un cuello de botella crítico: la falta de instrumentación especializada para la investigación, la cual depende de equipos extranjeros costosos y complejos que limitan la experimentación local.
+
+Para comprender el panorama actual de esta tecnología, la literatura científica ha explorado diversas alternativas en el micromecanizado. Por un lado, se ha abordado la optimización paramétrica del micromecanizado láser de CO₂ mediante metodologías estadísticas —como la superficie de respuesta (RSM) y el diseño compuesto central (CCD)— para mejorar el control geométrico y la topografía superficial en sistemas microelectromecánicos (MEMS) [1]. Asimismo, se ha demostrado la viabilidad de diseñar sistemas accesibles como el prototipo de láser de nitrógeno de excitación transversal atmosférica (TEA) [2], el cual opera de manera eficiente bajo condiciones normales de presión y atmósfera de gas. Por otro lado, diversos estudios han evaluado el impacto crítico de las propiedades ópticas y termofísicas del sustrato en la respuesta térmica bajo la irradiación de láseres de pulsos ultrarrápidos [3], así como los mecanismos físicos relacionados con el umbral de ablación, el volumen de remoción y el control morfológico en el procesamiento de microcanales [4], complementados por la investigación en recubrimientos delgados expuestos a haces láser en atmósferas controladas [5].
+
+A pesar de estos importantes antecedentes, los equipos comerciales actuales imponen costos prohibitivos que restringen el desarrollo científico en entornos académicos. Esta tecnología se aplica directamente en la caracterización y desarrollo experimental de microchips, sistemas microelectromecánicos y dispositivos microfluídicos de alta resolución.
+
+Para dar respuesta a la brecha, este estudio plantea como objetivo principal el desarrollo de la investigación en torno a la tecnología de litografía mediante láser. Mediante la optimización sistemática de los parámetros de procesamiento, se busca profundizar en los mecanismos de interacción láser-material y ofrecer una base experimental sólida que impulse la autonomía en la investigación microtécnica.
+
+## Referencias
+
+[1] Rai et al. (2026). *Parametric optimization of laser micromachining for enhanced microchannel geometry and surface topography in MEMS: an experimental investigation*.
+
+[2] Hussain (2012). *Design and Fabrication of Prototype Transversely Excited Atmospheric (TEA) Nitrogen Laser*.
+
+[3] Tsibidis & Stratakis (2022). *Substrate impact on the optothermal response of thin metallic targets under femtosecond laser pulse irradiation*.
+
+[4] Zhang et al. (2017). *Material removal effect of microchannel processing by femtosecond laser*.
+
+[5] Lubenko et al. (2013). *Influence of nitrogen laser beam on thin-film coatings*.
