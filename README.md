@@ -61,6 +61,8 @@ Este proyecto se enmarca dentro de la necesidad de fortalecer capacidades locale
 - [Lino Mario Turpo Chipana] — Estudiante de Ingeniería Física, UNI
 - [Fabio Ponce de León Cabezas] — Estudiante de Ingeniería Física, UNI
 - [Julio sebastian diaz coloma] — Estudiante de Ingeniería Física, UNI
+- [Herick Eduardo Quispe] — Estudiante de Ingeniería Física, UNI
+- [Bruno Palomino Luyo] — Estudiante de Ingeniería Física, UNI
 
 ## 📄 Licencia
 
