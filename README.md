@@ -6,7 +6,7 @@ En el Perú existe una carencia significativa de instrumentación especializada 
 
 - El desarrollo de líneas de investigación en microfabricación dentro de universidades y centros de investigación nacionales.
 - La formación práctica de estudiantes e investigadores en procesos de fabricación a microescala.
-- La independencia tecnológica frente a la importación de equipos de litografía comerciales, cuyo costo es prohibitivo para la mayoría de laboratorios universitarios del país.
+- La dependencia tecnológica frente a la importación de equipos de litografía comerciales, cuyo costo es alto para la mayoría de laboratorios universitarios del país.
 
 ## 🎯 Objetivo
 
@@ -51,7 +51,7 @@ La litografía láser es un proceso de fabricación aditiva/sustractiva que util
 
 ## 🚧 Estado del proyecto
 
-> Proyecto en fase de diseño e investigación inicial.
+> **Fase inicial / prueba de concepto.** Este repositorio parte de un prototipo rudimentario: el objetivo actual no es construir un instrumento de precisión terminado, sino sentar la primera piedra — validar el principio de funcionamiento con componentes básicos y accesibles, antes de iterar hacia versiones más precisas y robustas.
 
 ## 📚 Referencias y motivación técnica
 
@@ -63,4 +63,5 @@ Este proyecto se enmarca dentro de la necesidad de fortalecer capacidades locale
 
 ## 📄 Licencia
 
-_Por definir (se recomienda una licencia open-source como MIT o GPLv3 si el proyecto busca ser replicable por otros laboratorios)._
+Este proyecto se distribuye bajo la licencia **MIT**. Ver el archivo [`LICENSE`](LICENSE) para más detalles.
+
