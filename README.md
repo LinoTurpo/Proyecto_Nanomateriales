@@ -24,7 +24,6 @@ Desarrollar un sistema de litografía láser **accesible y especializado**, que 
 
 El sistema está orientado a la investigación en la fabricación de:
 
-- **Microchips** — prototipado de circuitos integrados a escala de laboratorio.
 - **Sensores** — fabricación de sensores basados en patrones microestructurados.
 - **Semiconductores** — procesamiento de obleas para investigación en dispositivos semiconductores.
 - **Circuitos** — fabricación de circuitos impresos y microcircuitos personalizados.
@@ -57,9 +56,10 @@ La litografía láser es un proceso de fabricación aditiva/sustractiva que util
 
 Este proyecto se enmarca dentro de la necesidad de fortalecer capacidades locales de I+D en microfabricación, siguiendo el enfoque de instrumentación científica de bajo costo (*open-source scientific hardware*) que ha demostrado ser efectivo en otros contextos de investigación con recursos limitados.
 
-## 👤 Autor
+## 👥 Autores
 
-**Ingeniero Lino** — Ingeniería Física, Universidad Nacional de Ingeniería (UNI), Lima, Perú.
+- [Lino Mario Turpo Chipana] — Estudiante de Ingeniería Física, UNI
+- [Fabio Ponce de León Cabezas] — Estudiante de Ingeniería Física, UNI
 
 ## 📄 Licencia
 
