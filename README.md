@@ -56,13 +56,18 @@ La litografía láser es un proceso de fabricación aditiva/sustractiva que util
 
 Este proyecto se enmarca dentro de la necesidad de fortalecer capacidades locales de I+D en microfabricación, siguiendo el enfoque de instrumentación científica de bajo costo (*open-source scientific hardware*) que ha demostrado ser efectivo en otros contextos de investigación con recursos limitados.
 
+## 📚 Libros de cabecera
+
+Optics (Eugene Hecht)
+Principles of Lithography (Harry J. Levinson)
+
 ## 👥 Autores
 
-- [Lino Mario Turpo Chipana] — Estudiante de Ingeniería Física, UNI
-- [Fabio Ponce de León Cabezas] — Estudiante de Ingeniería Física, UNI
-- [Julio sebastian diaz coloma] — Estudiante de Ingeniería Física, UNI
-- [Herick Eduardo Quispe] — Estudiante de Ingeniería Física, UNI
-- [Bruno Palomino Luyo] — Estudiante de Ingeniería Física, UNI
+- [Lino Mario Turpo Chipana] — (Gestor del Proyecto y Documentación)Estudiante de Ingeniería Física, UNI
+- [Fabio Ponce de León Cabezas] — (Hardware y Mecánica)Estudiante de Ingeniería Física, UNI
+- [Julio sebastian diaz coloma] — (Software)Estudiante de Ingeniería Física, UNI
+- [Herick Eduardo Quispe] — (Firmware y Electrónica)Estudiante de Ingeniería Física, UNI
+- [Bruno Palomino Luyo] — (Óptica y Materiales)Estudiante de Ingeniería Física, UNI
 
 ## 📄 Licencia
 
