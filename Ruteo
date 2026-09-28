@@ -1,0 +1,111 @@
+# Protocolo de Construcción y Validación: Sistema de Litografía Láser de Bajo Costo
+
+> **Contexto:** Proyecto de Fin de Ciclo - Universidad Nacional de Ingeniería (UNI)
+
+## 1. Lista de Materiales y Presupuesto (BOM)
+
+La selección de componentes prioriza la precisión micrométrica. Se evitaron componentes estándar de impresoras 3D (como correas de goma) ya que introducen vibraciones inaceptables a escala microscópica.
+
+### Mecánica y Estructura
+
+| Componente | Justificación Técnica | Origen | Costo (S/) |
+| :--- | :--- | :--- | :--- |
+| **2x Motores NEMA 17 (0.9°)** | Ofrecen 400 pasos por vuelta, duplicando la resolución física frente a motores comunes. | AliExpress | 90.00 |
+| **2x Husillos T8x2 (Single Start)** | Avanzan solo 2 mm por vuelta, transformando el giro del motor en un avance lineal muy fino. | AliExpress | 60.00 |
+| **2x Tuercas Anti-backlash** | Eliminan el "juego mecánico" (espacio vacío entre engranajes) al cambiar de dirección. | AliExpress | Incluido |
+| **Perfiles V-Slot 2020** | Proveen un chasis rígido y modular. | Paruro / Promart | 80.00 |
+
+### Electrónica y Control
+
+| Componente | Justificación Técnica | Origen | Costo (S/) |
+| :--- | :--- | :--- | :--- |
+| **ESP32 + CNC Shield V3** | Procesador de 32 bits capaz de leer G-code complejo sin pausas. | Paruro | 50.00 |
+| **2x Drivers TMC2209** | Interpolan los pasos magnéticos para un movimiento fluido y sin vibraciones parásitas. | Paruro | 40.00 |
+
+### Óptica y Seguridad
+
+| Componente | Justificación Técnica | Origen | Costo (S/) |
+| :--- | :--- | :--- | :--- |
+| **Láser Diodo 405nm (UV/Azul)** | Longitud de onda óptima para excitar fotorresinas comerciales. Debe incluir modulación PWM. | AliExpress | 120.00 |
+| **Lentes OD4+ (405nm)** | Equipo de Protección Personal crítico. Bloquea la radiación láser dispersa. | Amazon | 150.00 |
+| **Lente Colimador** | Enfoca el haz de luz al menor diámetro posible. | AliExpress | 30.00 |
+| **Dry Film Photoresist (1m)** | Película sensible a la luz UV para plasmar el diseño. | AliExpress | 20.00 |
+
+**Presupuesto total estimado:** ~ S/ 640.00
+
+---
+
+## 2. Metodología de Ensamblaje y Configuración
+
+El desarrollo se divide en 5 fases secuenciales para aislar variables y facilitar la detección de errores.
+
+* **Fase 1: Ensamblaje Mecánico (El Eje XY)**
+  * **Objetivo:** Construir una plataforma de movimiento perfectamente ortogonal (ejes a 90° exactos).
+* **Fase 2: Montaje Óptico (El Eje Z)**
+  * **Objetivo:** Lograr el posicionamiento vertical fino del láser.
+* **Fase 3: Integración Electrónica**
+  * **Objetivo:** Conectar el sistema de control y suprimir ruidos electrónicos.
+* **Fase 4: Programación del Firmware (El "Cerebro")**
+  * **Objetivo:** Traducir señales digitales en distancias físicas reales.
+  * **Procedimiento:** Carga el firmware FluidNC (o GRBL) en el ESP32.
+* **Fase 5: Flujo de Software (CAD a G-Code)**
+  * **Objetivo:** Convertir el diseño geométrico en trayectorias de máquina.
+
+---
+
+## 3. Protocolo de Pruebas y Caracterización
+
+Antes de utilizar reactivos costosos, el sistema debe ser caracterizado mediante pruebas estandarizadas. Estos resultados formarán la sección de "Resultados" del paper.
+
+### Prueba 1: Determinación del Punto Focal (Método del Plano Inclinado)
+* **Método:** Coloca un vidrio pintado de negro ligeramente inclinado (formando una rampa). Ordena al láser grabar una línea recta de inicio a fin.
+* **Análisis:** Bajo el microscopio, la línea se verá gruesa, luego se hará muy fina, y volverá a engrosarse. El punto más estrecho indica la altura exacta donde el láser alcanza su límite de difracción.
+
+### Prueba 2: Evaluación de Histéresis Mecánica (Backlash)
+* **Método:** Usando papel térmico de boletas, graba un cuadrado de 10x10 mm cinco veces seguidas en las mismas coordenadas.
+* **Análisis:** Si las esquinas no cierran o se ven múltiples líneas paralelas en lugar de una sola, el sistema tiene "backlash" (juego mecánico). Debes reajustar las tuercas de los tornillos hasta que las 5 pasadas se superpongan en una sola línea nítida.
+
+### Prueba 3: Matriz de Dosimetría (Potencia vs. Velocidad)
+* **Método:** Aplica fotorresina (*Dry Film*) a un sustrato. Graba una matriz de pequeños cuadrados. En cada columna aumenta la velocidad (mm/min), y en cada fila aumenta la potencia del láser (PWM%).
+* **Análisis:** Tras revelar químicamente, identifica qué cuadrado tiene los bordes más rectos. Mucha energía quema y ensancha el diseño; poca energía no logra endurecer la resina. Esto te dará la "Dosis Óptima de Exposición".
+
+### Prueba 4: Límite de Resolución Espacial
+* **Método:** Graba un patrón de barras decrecientes (similar al estándar USAF 1951).
+* **Análisis:** Usa un microscopio óptico calibrado en el laboratorio. Mide la línea más delgada que el sistema fue capaz de formar de manera continua y el espacio vacío más estrecho logrado sin que dos líneas se fusionen. Estos dos valores dictan la capacidad final de tu equipo.
+
+---
+
+## 4. Cronograma de Trabajo (Semanas 1-3)
+
+### Semana 1: Fundamentos, Compras y Entorno de Trabajo
+El objetivo es que cada miembro configure su entorno, adquiera los materiales críticos y entienda la teoría de su módulo.
+
+| Rol | Objetivos Prácticos |
+| :--- | :--- |
+| **Gestor y Documentación** | Crear Kanban en Jira y repo en GitHub. Crear grupo en Zotero, buscar artículos en Scopus sobre litografía maskless de bajo costo y descargar plantilla IEEE (Word/LaTeX). |
+| **Líder de Software (Python)** | Configurar entorno Python. Escribir script básico que cargue imagen en blanco y negro y lea dimensiones/píxeles usando OpenCV o PIL. |
+| **Líder de Firmware (C++)** | Configurar IDE. Escribir código C++ que reciba comando serial desde la PC y encienda un LED (simulando disparo del láser). |
+| **Líder de Mecánica** | Definir lista final y medidas. Comprar perfiles V-Slot, tornillería (Paruro/local) e importar husillos T8 y motores NEMA 17. |
+| **Líder de Óptica/Materiales** | Estudiar bioseguridad. Determinar potencia del diodo 405nm, encargar gafas y película fotorresistente. Investigar cálculo del punto focal. |
+
+### Semana 2: Prototipado Aislado y Desarrollo Teórico
+Cada integrante debe lograr que su componente funcione por separado antes de intentar conectarlo con el resto.
+
+| Rol | Objetivos Prácticos |
+| :--- | :--- |
+| **Gestor y Documentación** | Estructurar documento IEEE. Redactar borrador de "Introducción" con al menos 3 fuentes Scopus citadas desde Zotero. |
+| **Líder de Software (Python)** | Avanzar script para que genere y exporte lista de coordenadas (X, Y) o comandos G-Code básicos a partir de la imagen. |
+| **Líder de Firmware (C++)** | Conectar drivers en protoboard. Programar en C++ el giro completo de un motor tras recibir comando. |
+| **Líder de Mecánica** | Cortar perfiles y ensamblar marco cuadrado (X, Y). Verificar a 90 grados exactos con escuadra. |
+| **Líder de Óptica/Materiales** | Diseñar montaje del láser (eje Z) en papel/CAD. Investigar proceso químico para adherir Dry Film al sustrato de cobre. |
+
+### Semana 3: Primeras Integraciones (Hito de Control)
+Conectar el software, la electrónica y la mecánica para lograr un movimiento coordinado sin láser.
+
+| Rol | Objetivos Prácticos |
+| :--- | :--- |
+| **Gestor y Documentación** | Redactar "Metodología / Diseño del Sistema" en el IEEE con diagramas de bloques del equipo. |
+| **Líderes Software + Firmware** | **Trabajo conjunto:** Conectar script Python al microcontrolador. Enviar coordenadas por serial para que el C++ mueva los motores en protoboard dibujando el cuadrado. |
+| **Líderes Mecánica + Óptica** | **Trabajo conjunto:** Instalar carros móviles sobre aluminio. Acoplar marcador en lugar del láser para pruebas de trazado mecánico. |
+
+> **Meta del Hito:** Al finalizar la semana 3, el equipo tendrá el estado del arte en formato IEEE, la estructura física armada y un flujo de datos comprobado (desde Python hasta el motor en C++).
